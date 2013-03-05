@@ -44,12 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\Camera.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-=======
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletManager.cs" />
+     <Compile Include="Assets\Scripts\Camera.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
      <Compile Include="Assets\Scripts\_blankEmitter.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
@@ -57,7 +55,6 @@
      <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
      <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
->>>>>>> 7e592204140a7c2406305ff8d13cea9c5cf93e75
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
