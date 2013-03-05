@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{51F79149-4E0E-F4DE-62B3-6CD543FC841B}</ProjectGuid>
+	<ProjectGuid>{D0513D06-BB50-16DE-7175-E4F95FC6E721}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-UnityScript</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,14 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Bullet.cs" />
-     <Compile Include="Assets\Scripts\BulletManager.cs" />
-     <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
-     <Compile Include="Assets\Scripts\_blankEmitter.cs" />
-     <Compile Include="Assets\iTween\Plugins\iTween.cs" />
-     <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
-     <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
-     <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
+     <Compile Include="Assets\Scripts\jsemitter.js" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
