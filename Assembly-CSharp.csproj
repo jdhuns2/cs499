@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\BulletManager.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\RPathGen.cs" />
      <Compile Include="Assets\Scripts\Sphere.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
      <Compile Include="Assets\Scripts\_blankEmitter.cs" />
