@@ -5,6 +5,7 @@ public class Sphere : MonoBehaviour
 {
     Vector3[] a,b;
     public RPathGen pths;
+	//extern int NUMPATHS;
     bool isActive;
     Vector3 temp;
     public float minx;
@@ -34,7 +35,7 @@ public class Sphere : MonoBehaviour
         if (!isActive)
         {//choose random path
             int p = Random.Range(0, 9);//change these to max/min paths
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)//change to NUMNODES
             {
                 temp = pths.getNode(p, i);
                 b[i].x = temp.x;
@@ -46,7 +47,10 @@ public class Sphere : MonoBehaviour
         }
         else
         {
-            iTween.MoveTo(gameObject, iTween.Hash("path", b, "time", 5));
+            if(Input.GetKeyDown("g"))
+                iTween.Stop(e);
+
+            iTween.MoveTo(gameObject, iTween.Hash("path", b, "time", 10));
         }
     }
     #endregion
