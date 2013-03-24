@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //amount to move
-        float amtToMove = Input.GetAxisRaw("Horizontal") * PlayerSpeed*Time.deltaTime;
+        float amtToMove = Input.GetAxisRaw("Vertical") * PlayerSpeed*Time.deltaTime;
         //move player
         transform.Translate(Vector3.up * amtToMove);     
         //player wrap
