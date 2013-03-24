@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 
 {
     public float PlayerSpeed;
-    public GameObject cam;
+    public Camera cam;
     private float maxY, minY;//determine play area independent of camera position
 
 

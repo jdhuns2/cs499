@@ -13,9 +13,10 @@ public class RPathGen : MonoBehaviour
     #region Functions
 	
     public void init()
-    {
-    paths = new ArrayList();
-    genPaths();    
+    //void Start()
+	{
+    	paths = new ArrayList();
+    	//genPaths();    
     }
     public Vector3 getNode(int p, int i)
     {
