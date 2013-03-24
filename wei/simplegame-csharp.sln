@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{1C77004F-37A2-5437-B90C-200FC7B265EC}") = "cs499", "Assembly-CSharp.csproj", "{51F79149-4E0E-F4DE-62B3-6CD543FC841B}"
+Project("{A08FD734-BFEB-4B8E-CC4D-CBF905E09BFD}") = "simplegame", "Assembly-CSharp-vs.csproj", "{1BE7B359-A06E-822D-EC16-9C9E1400E4CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,21 +9,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{51F79149-4E0E-F4DE-62B3-6CD543FC841B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51F79149-4E0E-F4DE-62B3-6CD543FC841B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51F79149-4E0E-F4DE-62B3-6CD543FC841B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51F79149-4E0E-F4DE-62B3-6CD543FC841B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE7B359-A06E-822D-EC16-9C9E1400E4CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE7B359-A06E-822D-EC16-9C9E1400E4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE7B359-A06E-822D-EC16-9C9E1400E4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE7B359-A06E-822D-EC16-9C9E1400E4CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																GlobalSection(MonoDevelopProperties) = preSolution
+<<<<<<< HEAD:cs499-csharp.sln
+																																	GlobalSection(MonoDevelopProperties) = preSolution
 =======
 						GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																						GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> 7e592204140a7c2406305ff8d13cea9c5cf93e75
 >>>>>>> e6f08bb378e3dfc0cf86e4aa8cdae7f40b287be7
+=======
+																GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> 96cc441f170aaf72141f4b89832e66a1f9c5e003:wei/simplegame-csharp.sln
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

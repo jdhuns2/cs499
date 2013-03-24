@@ -4,34 +4,18 @@ using System.Collections;
 public class Camera : MonoBehaviour
 {
   private Vector3 mousepos;
-  
+  public RPathGen enemyPaths;
+  public Sphere enemy;
     #region Functions
     // Use this for initialization
     void Start()
-    {// initial position for the camera. On my computer this results in (0,0,0) being the bottom left coordinate
-        //with the play area being in the +x, +y plane.  Since this depends on the screen aspect ratio there is case
-        //statement and if statement to check for repeating decimals ratios
-        switch (camera.aspect.ToString())
-        {case "1.25":
-                transform.position = new Vector3(6.55f, 5.2f, -10);
-                break;
-            case "1.5":
-                transform.position = new Vector3(7.85f, 5.2f, -10);
-                break;
-            case "1.6":
-                transform.position = new Vector3(8.35f, 5.2f, -10);
-                break;
-        }
-        if (camera.aspect > 1.30 && camera.aspect < 1.34)
-        {
-            transform.position = new Vector3(6.95f, 5.2f, -10);
-        }
-        if (camera.aspect > 1.70 && camera.aspect < 1.79)
-        {
-            transform.position = new Vector3(9.25f, 5.2f, -10);
-        }
-
-        //transform.position = new Vector3(10.65f, 5.2f, -10);
+    {
+        enemyPaths = new RPathGen();
+        enemyPaths.setParent(this);
+        enemyPaths.init();
+        enemy.setPaths(enemyPaths);
+        Vector3 a = camera.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        enemy.minx = a.x;
     }
 
     // Update is called once per frame

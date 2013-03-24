@@ -11,6 +11,8 @@ public class SpiralEmitter : MonoBehaviour {
 	public float delay = 0.2f;
 	public float angleInc = 5;
 	public float angleMax = 45;
+	
+	public bool timerOn = true;
 	// Use this for initialization
 	void Start () {
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("ObjectManager");
@@ -20,7 +22,7 @@ public class SpiralEmitter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-		if(timer > delay)
+		if(timer > delay && timerOn)
 		{	
 			fire();
 			timer = 0;
