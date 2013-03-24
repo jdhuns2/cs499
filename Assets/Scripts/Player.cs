@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, minY, transform.position.z);
         if (Input.GetKeyDown("space"))
         {
-
+			this.gameObject.SendMessage("Fire");
 
         }
     }
