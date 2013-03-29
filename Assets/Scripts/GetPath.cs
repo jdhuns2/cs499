@@ -6,18 +6,17 @@ public class GetPath : MonoBehaviour
     Vector3[] a,b;
     public RPathGen pths;
 	//extern int NUMPATHS;
-    bool isActive;
+    public bool isActive;
     Vector3 temp;
     public float minx;
 	
-	public int numberOfNodes = 10;
+	public int NUMNODES = 10;
 	
 	iTweenPath path;
     #region Functions
     // Use this for initialization
-    void Start()
-    {
-        isActive = false;
+	void setPath(){
+	    isActive = false;
         transform.position = new Vector3(0, 0, 0);
 		
 		
@@ -30,27 +29,13 @@ public class GetPath : MonoBehaviour
 		path = (iTweenPath)this.gameObject.GetComponent("iTweenPath");		
        	
 		//give path required amount of nodes
-		for(int i = path.nodeCount; i < numberOfNodes; i++)
+		for(int i = path.nodeCount; i < NUMNODES; i++)
 		{
 			path.nodes.Add(new Vector3());
 		}
-		
 		//get the name for dictionary (it's the Key)
 		b = iTweenPath.GetPath(path.pathName);
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (transform.position.x < minx)
-        {
-            isActive = false;
-           // Debug.Log("inactive");
-            
-        }
-        if (!isActive)
-        {//choose random path
-            int p = Random.Range(0, 9);//change these to max/min paths
+		            int p = Random.Range(0, 9);//change these to max/min paths
             for (int i = 0; i < 10; i++)//change to NUMNODES
             {
                 temp = pths.getNode(p, i);
@@ -60,12 +45,33 @@ public class GetPath : MonoBehaviour
             }
             isActive = true;
             iTween.PutOnPath(this.gameObject, b, 0.0f);
-        }
-        else
+	}
+	
+    void Start()
+    {
+setPath();
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        //if (transform.position.x < minx)
+       // {
+       //     isActive = false;
+           // Debug.Log("inactive");
+            
+     //   }
+        if(isActive)
         {
 			this.gameObject.renderer.enabled = true;
-            iTween.MoveTo(gameObject, iTween.Hash("path", b, "time", 5));
+            iTween.MoveTo(gameObject, iTween.Hash("easetype",iTween.EaseType.linear,"path", b, "time", 15));
         }
+		if(Input.GetKeyDown ("k"))
+			killPath ();
     }
+	void killPath(){
+		iTween.Stop();
+		isActive=false;
+	}
     #endregion
 }
