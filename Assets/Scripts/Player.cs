@@ -39,7 +39,10 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, minY, transform.position.z);
         if (Input.GetKeyDown("space"))
         {
-			this.gameObject.SendMessage("fire");
+			gameObject.SendMessage("fire");
         }
     }
+	void onTriggerEnter(Collider c){
+	Debug.Log ("collision in player object");
+	}
 }

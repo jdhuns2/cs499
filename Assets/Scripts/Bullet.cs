@@ -28,7 +28,12 @@ public class Bullet : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)	//if we collide we return
 	{
-		//returnToParent ();
+		Debug.Log ("collision in bullet object");
+		returnToParent ();
+	}
+	void onCollisionEnter(){
+	Debug.Log ("collision");
+	
 	}
 	
 	//Custom Functions//

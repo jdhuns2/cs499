@@ -7,35 +7,40 @@ public class RPathGen : MonoBehaviour
     public Camera cam1;
     public ArrayList paths;
     public const int NUMPATHS = 10;
-    public const int NUMNODES = 10;
-	float R = .18f;//max distance between path nodes
+    public const int NUMNODES = 6;
+	float R = .25f;//max distance between path nodes
     public Vector3[] a;
+	public bool doneGenerating;
+	private int m_min, m_max;
     #region Functions
 	
     public void init()
-    //void Start()
 	{
     	paths = new ArrayList();
-    	//genPaths();    
+		doneGenerating=false;
+		m_min = 0;
+		m_max = NUMPATHS;
     }
     public Vector3 getNode(int p, int i)
     {
+		//returns a Vector3 containing the requested node
         a = new Vector3[NUMNODES];
         a = (Vector3[])paths[p];
         return a[i];
     }
-   public void setParent(Camera c)
-    {
-        cam1 = c;
-    }
-    public void genPaths()
+	public void genPathsRange(int min, int max){
+		doneGenerating=false;
+		m_min = min;
+		m_max = max;
+		StartCoroutine (genPaths());
+	}
+    private IEnumerator genPaths()
     {
         Vector3 temp;
         //a = new Vector3[NUMNODES];
         for (int i = 0; i < NUMPATHS; i++)
         {//random starting position outside of camera view
             a = new Vector3[NUMNODES];
-            a[0].z = 0;
             a[0].y = Random.Range(0.0f,1.0f);
             a[0].x = 1.2f;
             for (int j = 1; j < NUMNODES-1; j++)
@@ -45,7 +50,7 @@ public class RPathGen : MonoBehaviour
 				//next point calculation based on semicircle for equidistant points
 				a[j].x = a[j-1].x + R*Mathf.Cos (theta);
 				a[j].y = a[j-1].y + R*Mathf.Sin (theta);
-                a[j].z = 0;//can we remove this?
+              	//z value not needed for just 2 dimenions
 
             }
                 a[NUMNODES-1].z = 0;
@@ -59,16 +64,13 @@ public class RPathGen : MonoBehaviour
                     a[j].y = temp.y;
                     a[j].z = temp.z;
                 }
-            paths.Add(a);
+			if(paths.Count<i)//overwrite path if it exists
+            	paths[i] = a;
+			else
+				paths.Add (a);
         }
+		doneGenerating=true;
+		yield return null;
     }
-    public void drawPaths(int i)
-    {
-    Vector3 f = getNode(i,0);
-    Debug.Log(f.x);
-    Debug.Log(f.y);
-
-    }
-
     #endregion
 }

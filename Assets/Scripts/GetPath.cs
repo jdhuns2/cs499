@@ -4,54 +4,43 @@ using System.Collections;
 public class GetPath : MonoBehaviour
 {
     Vector3[] a,b;
-    public RPathGen pths;
-	//extern int NUMPATHS;
-    bool isActive;
+    public static RPathGen pths;
+	public static WaveEmitter WE;
+    public bool isActive,outofplay;
     Vector3 temp;
-    public float minx;
-	
-	public int numberOfNodes = 10;
-	
-	iTweenPath path;
+    public static float minx;
+	public iTweenPath path;
     #region Functions
     // Use this for initialization
-    void Start()
-    {
-        isActive = false;
-        transform.position = new Vector3(0, 0, 0);
+	void init(){
+	    isActive = false;
+		outofplay = false;
+		//have them start off screen
+        //transform.position = new Vector3(0, 0, -10);
 		
 		
 		//gets available paths
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
+		WE = (WaveEmitter)go.GetComponent ("WaveEmitter");
 		pths = (RPathGen)go.GetComponent("RPathGen");
 		
 		//add iTween component and get ref
-		this.gameObject.AddComponent("iTweenPath");
-		path = (iTweenPath)this.gameObject.GetComponent("iTweenPath");		
-       	
+		gameObject.AddComponent("iTweenPath");
+		path = (iTweenPath)gameObject.GetComponent("iTweenPath");
+		setPath (0,4);
+	}
+
+	void setPath(int min,int max){
+
 		//give path required amount of nodes
-		for(int i = path.nodeCount; i < numberOfNodes; i++)
+		for(int i = path.nodeCount; i < RPathGen.NUMNODES; i++)
 		{
 			path.nodes.Add(new Vector3());
 		}
-		
 		//get the name for dictionary (it's the Key)
 		b = iTweenPath.GetPath(path.pathName);
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (transform.position.x < minx)
-        {
-            isActive = false;
-           // Debug.Log("inactive");
-            
-        }
-        if (!isActive)
-        {//choose random path
-            int p = Random.Range(0, 9);//change these to max/min paths
-            for (int i = 0; i < 10; i++)//change to NUMNODES
+		    int p = Random.Range(min, max);
+            for (int i = 0; i < RPathGen.NUMNODES; i++)
             {
                 temp = pths.getNode(p, i);
                 b[i].x = temp.x;
@@ -60,12 +49,50 @@ public class GetPath : MonoBehaviour
             }
             isActive = true;
             iTween.PutOnPath(this.gameObject, b, 0.0f);
-        }
-        else
-        {
-			this.gameObject.renderer.enabled = true;
-            iTween.MoveTo(gameObject, iTween.Hash("path", b, "time", 5));
-        }
+		renderer.enabled=true;
+	}
+
+    void Start()
+    {
+		init();
     }
-    #endregion
+    
+    // Update is called once per frame
+    void Update()
+    {
+
+        if(isActive)
+        {
+		
+            iTween.MoveTo(gameObject, iTween.Hash("easetype",iTween.EaseType.easeInSine,"path", b, "time", 15));
+			//iTween.MoveUpdate(gameObject, iTween.Hash("path", b, "time", 15));
+			if(gameObject.transform.position.x<minx){//enemy is out of play
+				killPath();
+				outofplay=true;
+			}
+        }
+		if(Input.GetKeyDown ("k")){
+			//killPath ();
+			
+    }
+	}
+	void killPath(){
+		//stops enemy movement and places them out of camera and play area
+		//iTween.Stop ();
+		//path.enabled = false;
+		//gameObject.transform.Translate (new Vector3(0,0,-10));
+		if(isActive)//to make sure enemy count is only decremented once
+			WE.activeEnemies--;
+		isActive=false;
+	}
+ //enemy collision handler
+void OnTriggerEnter(Collider c){
+	killPath ();
+		Debug.Log ("collision in enemy object");
+		//Debug.Log (c.gameObject.name);
+	//update player's score
+	//tell enemy to stop shooting
+		//Debug.Log ("We've been hit!!!");
+	}#endregion
+
 }
