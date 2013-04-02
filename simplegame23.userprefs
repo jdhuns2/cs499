@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\SaveScores.cs">
+    <Files>
+      <File FileName="Assets\scripts\SaveScores.cs" Line="44" Column="15" />
+      <File FileName="Assets\scripts\HighScore.cs" Line="37" Column="32" />
+      <File FileName="Assets\scripts\Tester.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\Enemy.cs" Line="13" Column="2" />
+      <File FileName="Assets\scripts\Projectile.cs" Line="38" Column="4" />
+      <File FileName="Assets\scripts\Win.cs" Line="15" Column="27" />
+      <File FileName="Assets\scripts\MainMenu.cs" Line="12" Column="39" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
