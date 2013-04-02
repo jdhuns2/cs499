@@ -33,9 +33,10 @@ public class SpiralEmitter : MonoBehaviour {
 	{
 		//Fire a bullet
 		GameObject fireMe = bm.giveBullet();
-		fireMe.transform.position = this.gameObject.transform.position;
+		fireMe.transform.position = this.gameObject.transform.position + direction * 2;
 		fireMe.renderer.enabled = true;
 		fireMe.rigidbody.velocity = direction * speed;
+		fireMe.rigidbody.detectCollisions = true;
 		
 		//rotate fire direction
 		Quaternion q = Quaternion.AngleAxis(angle,Vector3.forward);

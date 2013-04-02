@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour {
 				ne.renderer.enabled = false;	//don't want to see them before "spawning"
 				//ne.SendMessage("setParent", this);	//let them know who's boss
 				//nb.rigidbody.detectCollisions = false;
-				ne.collider.enabled = false;
+				//ne.collider.enabled = false;
 				basicList.Add(ne);
 			}
 		//WaveEmitter.activeEnemies = basicAmount;
@@ -61,7 +61,7 @@ public class EnemyManager : MonoBehaviour {
 			r.renderer.enabled = false;
 			//r.SendMessage("setParent", this);	//let them know who's boss
 			//r.rigidbody.detectCollisions = false;
-			r.collider.enabled = false;
+			//r.collider.enabled = false;
 		}
 		return r;
 	}
