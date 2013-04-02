@@ -1,6 +1,19 @@
 ﻿<Properties>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
+=======
+<<<<<<< HEAD
+>>>>>>> 5f5f30133f55d72d3ddb3d7f5371aa981c55d9b5
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench />
+<<<<<<< HEAD
+=======
+>>>>>>> 718a272df93ecc569b8412189a65bfa08e1355a2
+>>>>>>> 46152e51d59d02925294721690ae2214b4dabe3f
+>>>>>>> 5f5f30133f55d72d3ddb3d7f5371aa981c55d9b5
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
