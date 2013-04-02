@@ -11,6 +11,8 @@ public class SpiralEmitter : MonoBehaviour {
 	public float delay = 0.2f;
 	public float angleInc = 5;
 	public float angleMax = 45;
+	
+	public bool timerOn = true;
 	// Use this for initialization
 	void Start () {
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("ObjectManager");
@@ -20,7 +22,7 @@ public class SpiralEmitter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-		if(timer > delay)
+		if(timer > delay && timerOn)
 		{	
 			fire();
 			timer = 0;
@@ -31,9 +33,10 @@ public class SpiralEmitter : MonoBehaviour {
 	{
 		//Fire a bullet
 		GameObject fireMe = bm.giveBullet();
-		fireMe.transform.position = this.gameObject.transform.position;
+		fireMe.transform.position = this.gameObject.transform.position + direction * 2;
 		fireMe.renderer.enabled = true;
 		fireMe.rigidbody.velocity = direction * speed;
+		fireMe.rigidbody.detectCollisions = true;
 		
 		//rotate fire direction
 		Quaternion q = Quaternion.AngleAxis(angle,Vector3.forward);
