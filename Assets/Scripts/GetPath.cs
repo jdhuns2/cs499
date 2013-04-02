@@ -27,13 +27,14 @@ public class GetPath : MonoBehaviour
 		//add iTween component and get ref
 		gameObject.AddComponent("iTweenPath");
 		path = (iTweenPath)gameObject.GetComponent("iTweenPath");
-		setPath (0,4);
+		setPath (0,9);
 	}
 
 	void setPath(int min,int max){
-
+		//min/max are range in paths array
 		//give path required amount of nodes
-		for(int i = path.nodeCount; i < RPathGen.NUMNODES; i++)
+		//nodeCount doesn't include start and end nodes
+		for(int i = path.nodeCount+2; i < RPathGen.NUMNODES; i++)
 		{
 			path.nodes.Add(new Vector3());
 		}

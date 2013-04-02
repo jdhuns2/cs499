@@ -15,7 +15,7 @@ public class WaveEmitter : MonoBehaviour {
 		myEnemyManager = (EnemyManager)go.GetComponent("EnemyManager");
 		
 		myPathgen.init();
-		
+
 		newWave();
 	}
 	
@@ -34,13 +34,13 @@ public class WaveEmitter : MonoBehaviour {
 	//Before each wave - create new paths 
 	void genPaths()
 	{
-		myPathgen.genPathsRange(5,10);
+		myPathgen.genPathsRange(0,10);
 	}	
 	
 	void newWave()
 	{
-		genPaths();
+		genPaths ();
 		myEnemyManager.initEnemies();	//futue: here we pass the type of enemies
-		this.activeEnemies=10;
+		activeEnemies=10;
 	}
 }
