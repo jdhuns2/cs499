@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{51F79149-4E0E-F4DE-62B3-6CD543FC841B}</ProjectGuid>
+	<ProjectGuid>{D8D5DDD6-FCD0-57FC-AB9C-773E54AABE1E}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,20 +44,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
-     <Compile Include="Assets\Scripts\Bullet.cs" />
-     <Compile Include="Assets\Scripts\BulletManager.cs" />
-     <Compile Include="Assets\Scripts\Camera.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\RPathGen.cs" />
-     <Compile Include="Assets\Scripts\Sphere.cs" />
-     <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
-     <Compile Include="Assets\Scripts\_blankEmitter.cs" />
-     <Compile Include="Assets\iTween\Plugins\iTween.cs" />
-     <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
-     <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
-     <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
+     <Compile Include="Assets\Pixelplacement\iTweenPath\Editor\iTweenPathEditor.cs" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>D:\Unity\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-vs.csproj">
+      <Project>{51F79149-4E0E-F4DE-62B3-6CD543FC841B}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

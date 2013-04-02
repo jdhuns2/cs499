@@ -1,19 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpiralEmitter.cs">
-    <Files>
-      <File FileName="Assets\Scripts\SpiralEmitter.cs" Line="13" Column="29" />
-      <File FileName="Assets\Scripts\BulletManager.cs" Line="47" Column="30" />
-      <File FileName="Assets\Scripts\Bullet.cs" Line="43" Column="13" />
-      <File FileName="Assets\Scripts\_blankEmitter.cs" Line="8" Column="26" />
->>>>>>> 7e592204140a7c2406305ff8d13cea9c5cf93e75
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
