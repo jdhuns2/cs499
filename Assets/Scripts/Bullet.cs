@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour {
 	BulletManager parent; //reference to manager
 	float timer = 0;
 	
-	public float lifetime = 1;
+	public float lifetime = 10;
 	//Unity Functions//
 	
 	// Use this for initialization

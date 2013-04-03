@@ -9,9 +9,10 @@ public class SpiralEmitter : MonoBehaviour {
 	public float speed = 1;	//speed of the bullets
 	private float timer = 0;
 	public float delay = 0.2f;
-	public float angleInc = 5;
+	public float angleInc = 0;
 	public float angleMax = 45;
 	
+	public string phyLayer = "Player_Layer";
 	public bool timerOn = true;
 	// Use this for initialization
 	void Start () {
@@ -37,6 +38,9 @@ public class SpiralEmitter : MonoBehaviour {
 		fireMe.renderer.enabled = true;
 		fireMe.rigidbody.velocity = direction * speed;
 		fireMe.rigidbody.detectCollisions = true;
+		
+		fireMe.layer = LayerMask.NameToLayer(phyLayer);
+		
 		
 		//rotate fire direction
 		Quaternion q = Quaternion.AngleAxis(angle,Vector3.forward);
