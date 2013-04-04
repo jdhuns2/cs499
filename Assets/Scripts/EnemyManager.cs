@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour {
 
-	public int basicAmount = 10;	//number of enemies
+	public int basicAmount = 3;	//number of enemies
 	ArrayList basicList;			//enemy ref array
 	
 	
@@ -36,9 +36,9 @@ public class EnemyManager : MonoBehaviour {
 			for(int i = 0; i < basicAmount; i++)
 			{
 				GameObject ne = (GameObject)Instantiate(basicFab);
-				ne.SendMessage("Start");
+				//ne.SendMessage("Start");
 				ne.renderer.enabled = false;	//don't want to see them before "spawning"
-				//ne.SendMessage("setParent", this);	//let them know who's boss
+				ne.SendMessage("setParent", this);	//let them know who's boss
 				//nb.rigidbody.detectCollisions = false;
 				//ne.collider.enabled = false;
 				basicList.Add(ne);
@@ -53,17 +53,19 @@ public class EnemyManager : MonoBehaviour {
 		{
 			r = (GameObject)basicList[0];
 			basicList.Remove(r);
-			//cacheAmount --;
 			basicAmount = basicList.Count;
 		}
 		else{					//if list is empty create a new bullet
 			r = (GameObject)Instantiate(basicFab);
 			r.renderer.enabled = false;
-			//r.SendMessage("setParent", this);	//let them know who's boss
+			r.SendMessage("setParent", this);	//let them know who's boss
 			//r.rigidbody.detectCollisions = false;
 			//r.collider.enabled = false;
 		}
 		return r;
+	}
+	public void recieveEnemy(GameObject enemy){
+		basicList.Add(enemy);
 	}
 	public void reAnimate(){
 		//restarts all of the enemies in the basic list

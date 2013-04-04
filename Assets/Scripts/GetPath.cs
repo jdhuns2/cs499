@@ -7,18 +7,17 @@ public class GetPath : MonoBehaviour
     public static RPathGen pths;
 	public static WaveEmitter WE;
     public bool isActive,outofplay;
+	public int waveNum;
     Vector3 temp;
     public static float minx;
 	public iTweenPath path;
+	private EnemyManager parent;
     #region Functions
     // Use this for initialization
 	void init(){
 	    isActive = false;
 		outofplay = false;
-		//have them start off screen
-        //transform.position = new Vector3(0, 0, -10);
-		
-		
+		waveNum = 0;
 		//gets available paths
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
 		WE = (WaveEmitter)go.GetComponent ("WaveEmitter");
@@ -27,15 +26,22 @@ public class GetPath : MonoBehaviour
 		//add iTween component and get ref
 		gameObject.AddComponent("iTweenPath");
 		path = (iTweenPath)gameObject.GetComponent("iTweenPath");
-		setPath (0,4);
+		//setPath (0,9);
 	}
-
-	void setPath(int min,int max){
-
+	public void startPath(){
+		//puts the enemy back at beginning of path
+		transform.Translate (b[0]);
+		iTween.PutOnPath (this.gameObject,b,0.0f);
+		isActive=true;
+	}
+	public void setPath(int min,int max){
+		//gets a random path and activates the enemy
 		//give path required amount of nodes
-		for(int i = path.nodeCount; i < RPathGen.NUMNODES; i++)
-		{
-			path.nodes.Add(new Vector3());
+		if(path.nodes.Count<RPathGen.NUMNODES){
+			for(int i = path.nodes.Count; i < RPathGen.NUMNODES; i++)
+			{
+				path.nodes.Add(new Vector3());
+			}
 		}
 		//get the name for dictionary (it's the Key)
 		b = iTweenPath.GetPath(path.pathName);
@@ -47,9 +53,9 @@ public class GetPath : MonoBehaviour
                 b[i].y = temp.y;
                 b[i].z = temp.z;
             }
-            isActive = true;
-            iTween.PutOnPath(this.gameObject, b, 0.0f);
-		renderer.enabled=true;
+            //isActive = true;
+            //iTween.PutOnPath(this.gameObject, b, 0.0f);
+		//renderer.enabled=true;
 	}
 
     void Start()
@@ -65,26 +71,29 @@ public class GetPath : MonoBehaviour
         {
 		
             iTween.MoveTo(gameObject, iTween.Hash("easetype",iTween.EaseType.easeInSine,"path", b, "time", 15));
-			//iTween.MoveUpdate(gameObject, iTween.Hash("path", b, "time", 15));
-			if(gameObject.transform.position.x<minx){//enemy is out of play
-				killPath();
+			if(gameObject.transform.position.z>-2){//enemy is out of play
 				outofplay=true;
+				killPath();
 			}
         }
+
 		if(Input.GetKeyDown ("k")){
-			//killPath ();
+			killPath ();
 			
     }
 	}
 	void killPath(){
 		//stops enemy movement and places them out of camera and play area
-		//iTween.Stop ();
-		//path.enabled = false;
-		//gameObject.transform.Translate (new Vector3(0,0,-10));
 		if(isActive)//to make sure enemy count is only decremented once
 			WE.activeEnemies--;
 		isActive=false;
+		//send enemy back to cache to be reanimated
+		parent.recieveEnemy(this.gameObject);
 	}
+	void setParent(EnemyManager e){
+		parent=e;
+	}
+
 #endregion
 
 }
