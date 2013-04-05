@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour {
 
-	public int basicAmount = 3;	//number of enemies
+	public int basicAmount = 10;	//number of enemies
 	ArrayList basicList;			//enemy ref array
 	
 	
@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour {
 			for(int i = 0; i < basicAmount; i++)
 			{
 				GameObject ne = (GameObject)Instantiate(basicFab);
-				//ne.SendMessage("Start");
+				ne.SendMessage("Start");
 				ne.renderer.enabled = false;	//don't want to see them before "spawning"
 				ne.SendMessage("setParent", this);	//let them know who's boss
 				//nb.rigidbody.detectCollisions = false;

@@ -1,10 +1,24 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\WaveEmitter.cs">
+    <Files>
+      <File FileName="Assets\Scripts\EnemyManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WaveEmitter.cs" Line="22" Column="1" />
+      <File FileName="Assets\Scripts\RPathGen.cs" Line="27" Column="1" />
+      <File FileName="Assets\Scripts\GetPath.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PathManager.cs" Line="22" Column="1" />
+      <File FileName="Assets\Scripts\SpiralEmitter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyEmitter.cs" Line="29" Column="5" />
+      <File FileName="Assets\iTween\Plugins\iTween.cs" Line="1" Column="1" />
+      <File FileName="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\James\Desktop\pro\cs499\Assets\Scripts\WaveEmitter.cs" line="55" />
       <Breakpoint file="C:\Users\James\Desktop\pro\cs499\Assets\Scripts\GetPath.cs" line="74" />
+      <Breakpoint file="C:\Users\James\Desktop\pro\cs499\Assets\Scripts\WaveEmitter.cs" line="17" />
+      <Breakpoint file="C:\Users\James\Desktop\pro\cs499\Assets\Scripts\WaveEmitter.cs" line="35" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

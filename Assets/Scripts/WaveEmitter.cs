@@ -29,10 +29,10 @@ public class WaveEmitter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	if (wavenum==0)
-			newTimedWave (0,1,0,0,0,0);
-	if(activeEnemies<1){
-			Debug.Log (activeEnemies);
-			myEnemyEmitter.enabled=true;
+			newTimedWave (0,8,0,0,0,0);
+	if(activeEnemies<8){
+			//Debug.Log (activeEnemies);
+			myEnemyEmitter.isActive=true;
 		}
 	}
 	
@@ -40,10 +40,7 @@ public class WaveEmitter : MonoBehaviour {
 	/////////////My functions/////////////
 	
 	//Before each wave - create new paths 
-	void genPaths()
-	{
-		//myPathgen.genPathsRange(0,9);
-	}
+
 	public void newTimedWave(float seconds,int loc1, int loc2, int loc3, int loc4, int loc5){
 		//sets up timed wave
 		timer = 0.0f;
@@ -73,7 +70,6 @@ public class WaveEmitter : MonoBehaviour {
 	void newWave()
 	{
 		//put enemies on paths and set wavenum
-		genPaths();
 		myEnemyManager.initEnemies();	//futue: here we pass the type of enemies
 		this.activeEnemies=10;
 	}

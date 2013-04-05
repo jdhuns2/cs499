@@ -45,7 +45,8 @@ public class RPathGen : MonoBehaviour
         Vector3 temp;
 		for (int i= min;i<max;i++){
 			a = new Vector3[NUMNODES];
-			pathMGR.createPath (4,4,a,R,NUMNODES);
+			//use NUMNODES-1 so that last node can move enemy out of play area via z axis
+			pathMGR.createPath (1,1,a,R,NUMNODES);
 			for (int j = 0; j < NUMNODES; j++)
                 {//convert to world points
                     temp = cam1.camera.ViewportToWorldPoint(new Vector3(a[j].x, a[j].y, cam1.camera.farClipPlane));
@@ -53,6 +54,9 @@ public class RPathGen : MonoBehaviour
                     a[j].y = temp.y;
                     a[j].z = temp.z;
                 }
+			//a[NUMNODES-1].x = a[NUMNODES-2].x;
+			//a[NUMNODES-1].y = a[NUMNODES-2].y;
+			//a[NUMNODES-1].z = a[NUMNODES-2].z-1;
 			if(paths.Count<i)//overwrite path if it exists
             	paths[i] = a;
 			else
