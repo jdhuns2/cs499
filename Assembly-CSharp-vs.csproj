@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
+     <Compile Include="Assets\Scripts\WaveCreator.cs" />
      <Compile Include="Assets\Scripts\WaveEmitter.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
      <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
