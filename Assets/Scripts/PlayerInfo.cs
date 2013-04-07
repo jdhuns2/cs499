@@ -9,6 +9,9 @@ using System.Collections;
 
 public class PlayerInfo : MonoBehaviour {
 
+	public GUIText GUIscore;
+	public GUIText GUIlives;
+	public GUIText GUIbombs;
 	
 	public int score = 0;
 	
@@ -16,10 +19,14 @@ public class PlayerInfo : MonoBehaviour {
 	
 	public int lives = 2;
 	
+	public int bombs = 0;
+	
 	
 	// Use this for initialization
 	void Start () {
-	
+		GUIscore.text = score.ToString();
+		GUIlives.text = "Lives: " + lives.ToString();
+		GUIbombs.text = "Bombs: " + bombs.ToString();
 	}
 	
 	// Update is called once per frame
@@ -52,4 +59,12 @@ public class PlayerInfo : MonoBehaviour {
 			upgrade2 = newUp;
 		}	
 	}
+	
+	public void AddScore(int aScore)
+	{
+		score+= aScore;
+		GUIscore.text = score.ToString();
+	}
+	
+	//Need to add and sub lives etc.
 }
