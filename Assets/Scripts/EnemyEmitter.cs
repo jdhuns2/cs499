@@ -30,8 +30,7 @@ public class EnemyEmitter : MonoBehaviour {
 			}
 			else
 				myEnemyManager.recieveEnemy (go);
-		//go.SendMessage ("startPath");
-		}
+		}//end of if(isActive)
 	}
 
 }

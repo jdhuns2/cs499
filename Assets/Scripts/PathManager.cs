@@ -47,7 +47,7 @@ if(startMin>startMax)
 	path[1] = secondNode (startloc,path[0]);
 	for (int i=2; i<NUMNODES-1;i++)
 			path[i] = nextNode (path[i-1]);
-	path[NUMNODES-1] = lastNode (path[NUMNODES-2]);
+	path[NUMNODES-1] = lastNode (path[NUMNODES-2],startloc);
 	}
 	private Vector3 startNode(int location){
 	//generates a random start location outside of the play area based on location given
@@ -120,8 +120,10 @@ if(startMin>startMax)
 		//default if logic is faulty
 		return left (previous);
 	}
-	private Vector3 lastNode(Vector3 previous){
-	//checks for playarea edge and goes for it
+	private Vector3 lastNode(Vector3 previous,int start){
+	//have to make sure enemy doesn't start and end in same area
+	//otherwise out-of-play detection will not work
+		
 		if(previous.y+radius>1)
 			return up (previous);
 		if(previous.y-radius<0)

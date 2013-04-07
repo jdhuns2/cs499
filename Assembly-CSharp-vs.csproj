@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
-     <Compile Include="Assets\Scripts\RPathGen.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
      <Compile Include="Assets\Scripts\WaveEmitter.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
