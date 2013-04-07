@@ -48,7 +48,7 @@ public class GetPath : MonoBehaviour
 	public void createPath(int min,int max){
 		//gets a random path and activates the enemy
 		//give path required amount of nodes
-		if(path.nodes.Count<RPathGen.NUMNODES){
+		if(path.nodes.Count<NUMNODES){
 			for(int i = path.nodes.Count; i <NUMNODES; i++)
 				path.nodes.Add(new Vector3());
 		}//end if
@@ -64,7 +64,7 @@ public class GetPath : MonoBehaviour
                     b[j].z = temp.z;
                 }
 	}
-	public void setPath(int min,int max){
+	public void setPath(int min,int max){/*
 		//gets a random path and activates the enemy
 		//give path required amount of nodes
 		if(path.nodes.Count<RPathGen.NUMNODES){
@@ -74,13 +74,13 @@ public class GetPath : MonoBehaviour
 		//get the name for dictionary (it's the Key)
 		b = iTweenPath.GetPath(path.pathName);
 		    int p = Random.Range(min, max);
-            for (int i = 0; i < RPathGen.NUMNODES; i++)
+         //   for (int i = 0; i < RPathGen.NUMNODES; i++)
             {
             //    temp = pths.getNode(p, i);
                 b[i].x = temp.x;
                 b[i].y = temp.y;
                 b[i].z = temp.z;
-            }
+            }*/
 
 	}
 
