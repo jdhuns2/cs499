@@ -11,11 +11,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //change start position of player
         Vector3 pos;
         pos = cam.camera.ViewportToWorldPoint(new Vector3(0,0.5f,cam.camera.farClipPlane));
-        transform.position = pos;
+        //set start position
+		transform.position = pos;
         PlayerSpeed = 7.0f;
+		//set max and minimum y for player wrap
         pos = cam.camera.ViewportToWorldPoint(new Vector3(1,1,cam.camera.farClipPlane));
         maxY = pos.y;
         pos = cam.camera.ViewportToWorldPoint(new Vector3(0, 0, cam.camera.farClipPlane));
@@ -25,7 +26,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         //amount to move
-
         float amtToMove = Input.GetAxisRaw("Vertical") * PlayerSpeed*Time.deltaTime;
 
         //float amtToMove = Input.GetAxisRaw("Vertical") * PlayerSpeed * Time.deltaTime;

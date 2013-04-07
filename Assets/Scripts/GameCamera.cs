@@ -15,14 +15,14 @@ public class GameCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown("space"))//debuging function
+        if (Input.GetKeyDown("space"))//debuging function
             //this will show the bottome left and top right screen coordinates in pixels
-        //{
-          //  Debug.Log(this.camera.aspect.ToString());
-           // Debug.Log("botleft: " + camera.ViewportToWorldPoint(new Vector3(0, 0, camera.farClipPlane)));
-            //Debug.Log("topright: " + camera.ViewportToWorldPoint(new Vector3(1, 1, camera.farClipPlane)));
+        {
+            Debug.Log(this.camera.aspect.ToString());
+            Debug.Log("botleft: " + camera.ViewportToWorldPoint(new Vector3(0, 0, camera.farClipPlane)));
+            Debug.Log("topright: " + camera.ViewportToWorldPoint(new Vector3(1, 1, camera.farClipPlane)));
 
-//	        }
+	        }
 
 
         if (Input.GetMouseButtonDown(0))

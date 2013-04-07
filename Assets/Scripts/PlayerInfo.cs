@@ -8,13 +8,13 @@ using UnityEngine;
 using System.Collections;
 
 public class PlayerInfo : MonoBehaviour {
+
 	
 	public int score = 0;
 	
 	public GameObject upgrade1, upgrade2;
 	
 	public int lives = 2;
-	
 	
 	
 	// Use this for initialization
@@ -26,6 +26,7 @@ public class PlayerInfo : MonoBehaviour {
 	void Update () {
 	
 	}
+
 	
 	//My Functions//
 	

@@ -47,14 +47,15 @@
      <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletManager.cs" />
+     <Compile Include="Assets\Scripts\EnemyEmitter.cs" />
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\GameCamera.cs" />
      <Compile Include="Assets\Scripts\GetPath.cs" />
      <Compile Include="Assets\Scripts\KillEnemy.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
+     <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
-     <Compile Include="Assets\Scripts\RPathGen.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
      <Compile Include="Assets\Scripts\WaveEmitter.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
