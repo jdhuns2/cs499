@@ -1,5 +1,11 @@
 using UnityEngine;
 using System.Collections;
+/// <summary>
+/// PathManager.cs Written by James Hunsucker
+/// This script is responsible for generating the enemy paths.  Since ITween requires nodes on paths to be 
+/// equally spaced the next path node is determined based on polar coordinates of a radius and direction.  The
+/// path directions are defined in the init() function.
+/// </summary>
 	public struct PathDirections
 	{public float min, max;
 	}
@@ -43,7 +49,9 @@ if(startMin>startMax)
 	startMax=5;
 		
 	startloc = Random.Range (startMin,startMax);
+		//the first node depends on the startlocation
 	path[0] = startNode (startloc);
+		//the second node depends on the first
 	path[1] = secondNode (startloc,path[0]);
 	for (int i=2; i<NUMNODES-1;i++)
 			path[i] = nextNode (path[i-1]);
@@ -184,7 +192,7 @@ if(startMin>startMax)
 	}
 	private Vector3 functionMap(int index,Vector3 previous){
 	//this function calls the corresponding direction function so that directions can be generated randomly
-	//0/8-up 1-leftup 2-left 3-leftdown 4-down 5-rightdown 6-right 7-rightup
+	//0,8-up 1,9-leftup 2,10left 3-leftdown 4-down 5-rightdown 6-right 7-rightup
 		switch(index){
 		case 0://up is mapped twice so random.range can be used
 		case 8:

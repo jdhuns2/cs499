@@ -1,25 +1,33 @@
 using UnityEngine;
 using System.Collections;
 using System.Threading;
+/// <summary>
+/// WaveEmitter.cs Written by James Hunsucker
+/// The WaveEmitter is responsible for checking on wave completion status and emitting a new wave when
+/// the current wave has been completed.
+/// </summary>
+
+
 
 public class WaveEmitter : MonoBehaviour {
 	private EnemyManager myEnemyManager;
-	public int activeEnemies;
+	public int activeEnemies;//# of enemies currently in the play area
 	public float timer, delay;//used for timed waves
 	private int enemieslost;//used for waves that end after certain amount of enemies killed
 	private EnemyEmitter myEnemyEmitter;
 	private WaveCreator myWaveCreator;
 	public int wavenum;
-	public int totalEnemies;
-	public int WAVETYPE;
-	private bool nextWave;
+	public int totalEnemies;//Total enemies that are part of the wave
+	public int WAVETYPE;//the type of wave. SEE WaveCreator for descriptions
+	private bool nextWave;//used to delay the appearance of the next wave of enemies
 	// Use this for initialization
 	void Start () {
+		//set up references to other objects
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
 		myEnemyEmitter=(EnemyEmitter)go.GetComponent ("EnemyEmitter");
 		myWaveCreator=(WaveCreator)go.GetComponent ("WaveCreator");
 		//initialize WaveCreator
-		myWaveCreator.setDifficulty(0);
+		myWaveCreator.setDifficulty(0);//default difficulty
 		
 		go = (GameObject)GameObject.FindGameObjectWithTag("ObjectManager");
 		myEnemyManager = (EnemyManager)go.GetComponent("EnemyManager");
@@ -29,16 +37,19 @@ public class WaveEmitter : MonoBehaviour {
 		wavenum = 0;
 		activeEnemies=0;
 		delay = 0.0f;
-		nextWave = true;
+		nextWave = false;
 		WAVETYPE = myWaveCreator.createWave (Random.Range (0,0));//change to (1,3)
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//this function checks if the current wave has been completed. If so a new wave is created and the delay for
+		//the new wave to start is set.
 		if(nextWave){
 			delay += Time.deltaTime;
 			if(delay > 3.0f){//time delay between waves
 				delay = 0.0f;
+				//delay is over create new wave
 				WAVETYPE = myWaveCreator.createWave (WAVETYPE);
 				nextWave = false;
 				myEnemyEmitter.nextColor ();
@@ -52,35 +63,28 @@ public class WaveEmitter : MonoBehaviour {
 			}
 		}
 	if(activeEnemies<totalEnemies){
-			//myEnemyEmitter.isActive=true;
 			myEnemyEmitter.sendEnemy ();
 		}
 	}
-	/////////////My functions/////////////
-	
-	//Before each wave - create new paths 
 
 	public void newTimedWave(float seconds,int loc1, int loc2, int loc3, int loc4, int loc5, float emitterDelay){
-		//sets up timed wave
+		//sets up a new timed wave
 		timer = 0.0f;
 		wavenum++;
-		//emitter and waveEmitter are on same wave
-		myEnemyEmitter.m_wavenum = wavenum;
 		//create enemies for each starting location specified
 		enemySetUp (loc1,loc2,loc3,loc4,loc5);
-		Debug.Log ("Activeenemies"+activeEnemies);
 	}
 	public void newKillCountWave(int killamt, int loc1, int loc2, int loc3, int loc4, int loc5, float emitterDelay){
 		wavenum++;
-		myEnemyEmitter.m_wavenum = wavenum;
 		enemySetUp (loc1,loc2,loc3,loc4,loc5);
 	}
 	public void newKillStreakWave(int killStreak,int loc1,int loc2,int loc3, int loc4, int loc5, float emitterDelay){
 		wavenum++;
-		myEnemyEmitter.m_wavenum = wavenum;
 		enemySetUp (loc1,loc2,loc3,loc4,loc5);
 	}
 	private void enemySetUp(int loc1, int loc2, int loc3, int loc4, int loc5){
+		//this is a helper function to reduce code redundancy and should be called whenever a new wave is created
+		//sets up enemies on new paths for new wave.
 		totalEnemies=0;
 		for(int i=0;i<loc1;i++){
 			spawnFromLocation(1,1);
@@ -105,21 +109,22 @@ public class WaveEmitter : MonoBehaviour {
 		
 	}
 	private void spawnFromLocation(int min,int max){
-		//puts enemy objects on a new path
+		//finds an enemy from an older wave and sets it on a new path
 		GameObject go;
 		GetPath e;
-		int trys = 0;
+		//int trys = 0;
 		go = myEnemyManager.giveEnemy();
 		e = (GetPath)go.GetComponent("GetPath");
 		while(e.waveNum==wavenum){//enemy is already member of wave need a new one
 			myEnemyManager.recieveEnemy (go);	
 			go = myEnemyManager.giveEnemy();
 			e = (GetPath)go.GetComponent("GetPath");
-			trys++;
+			//trys++;
 		}
+		//we have enemy from older wave. Update it's wavenumber and give it a new path
 		e.waveNum = wavenum;
 		e.createPath(min,max);
 		myEnemyManager.recieveEnemy (go);
 			//place enemy at end of list	    
-		}//end of while
+		}//end of spawnFromLocation
 	}

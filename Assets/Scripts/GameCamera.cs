@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Gamecamera.cs Written by James Hunsucker
+/// This script sets up the game camera.  The script is used for debugging purposes only
+/// </summary>
 public class GameCamera : MonoBehaviour
 {
   private Vector3 mousepos;
@@ -8,8 +11,6 @@ public class GameCamera : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		Vector3 t = camera.ViewportToWorldPoint(new Vector3(0,0,camera.farClipPlane));
- 		GetPath.minx= t.x;
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class GameCamera : MonoBehaviour
 	        }
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))//debugging function
             //this will display the screen coordinates where the mouse is clicked
         {
             mousepos = Input.mousePosition;

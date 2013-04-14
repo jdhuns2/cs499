@@ -1,10 +1,14 @@
 using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// GetPath.cs Written by James Hunsucker
+/// GetPath is attached to the enemy object.  It is responsible for putting itself back at the beginning of it's path,
+/// getting a new path(called from WaveEmitter::spawnLocation), checking to see if the enemy has reached the end of it's path,
+///and deactivating itself when killed or out of play
+/// </summary>
 public class GetPath : MonoBehaviour
 {
-    Vector3[] b;
-  //  public static RPathGen pths;
+    Vector3[] b;//holds the enemy path
 	public static WaveEmitter WE;
 	public static PathManager PM;
 	public Camera cam1;
@@ -39,15 +43,15 @@ public class GetPath : MonoBehaviour
 	}
 	public void startPath(){
 		//puts the enemy back at beginning of path
-		ptime=0.0f;
-		iTween.MoveTo (gameObject,b[0],0.0f);
+		ptime=0.0f;//reset time on path
+		iTween.MoveTo (gameObject,b[0],0.0f);//move enemy to start of path
 		iTween.PutOnPath (this.gameObject,b,0.0f);
 		isActive=true;
 		outofplay=false;
 		WE.activeEnemies++;
 	}
 	public void createPath(int min,int max){
-		//gets a random path and activates the enemy
+		//gets a random path from the location provided
 		//give path required amount of nodes
 		if(path.nodes.Count<NUMNODES){
 			for(int i = path.nodes.Count; i <NUMNODES; i++)
@@ -58,7 +62,7 @@ public class GetPath : MonoBehaviour
 		//use NUMNODES-1 so that last node can move enemy out of play area via z axis
 		PM.createPath (min,max,b,R,NUMNODES);
 		for (int j = 0; j < NUMNODES; j++)
-                {//convert to world points
+                {//convert from camera coordinates to world coordinates
                     temp = cam1.camera.ViewportToWorldPoint(new Vector3(b[j].x, b[j].y, cam1.camera.farClipPlane));
                     b[j].x = temp.x;
                     b[j].y = temp.y;
@@ -76,8 +80,9 @@ public class GetPath : MonoBehaviour
 	
         if(isActive)
         {
-			ptime+=Time.deltaTime;
+			ptime+=Time.deltaTime;//increment time enemy has been on path
             iTween.MoveTo(gameObject, iTween.Hash("easetype",iTween.EaseType.linear,"path", b, "time", 15));
+			//since enemy paths may start and end in similar locations we must wait to check if the enemy is out of play
 			if(ptime>14.0)
 				if(gameObject.transform.position.x-temp.x<0.05&&gameObject.transform.position.y-temp.y<0.05){//enemy is close to end of path
 					outofplay=true;
@@ -96,6 +101,7 @@ public class GetPath : MonoBehaviour
 		parent.recieveEnemy(this.gameObject);
 	}
 	void setParent(EnemyManager e){
+		//sets the reference to the enemy cache
 		parent=e;
 	}
 

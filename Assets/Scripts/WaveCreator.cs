@@ -2,7 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 //timed wave = 0,3 kill count wave = 1, kill streak = 2
-
+/// <summary>
+/// WaveCreator.cs Written by James Hunsucker
+/// This script is used to create the new enemy waves.  It determines the wave type or goal the player must
+/// achieve to progress to the next wave.  There are three different types of waves: timed(player just has to survive
+/// until the timer has run out), kill count (the player must accumulate a determined amount of kills to progress), and
+/// kill streak(the player must kill a determined amount of enemies before any enemies finish their path).
+/// 
+/// </summary>
 public class WaveCreator : MonoBehaviour {
 	//varaiables to keep track of last wave to increment them
 	public float twaveDuration;
@@ -53,6 +60,7 @@ public class WaveCreator : MonoBehaviour {
 	}
 	
 		void startLocations(){
+		//this function randomly decides where the enemies will spawn from.  
 			//reset all values
 			int amtEnemies = Random.Range (minEnemies,maxEnemies);
 			int t = 0;
@@ -62,7 +70,8 @@ public class WaveCreator : MonoBehaviour {
 			loc4 = 0;
 			loc5 = 0;
 				while(t<amtEnemies){
-					if(locmin==1&&t<amtEnemies){
+				//continue to loop until all enemies have a starting location
+					if(locmin==1&&t<amtEnemies){//spawn from area 1
 						int a = Random.Range (1,amtEnemies-t);
 						t+=a;
 						loc1+=a;
@@ -88,13 +97,9 @@ public class WaveCreator : MonoBehaviour {
 					}
 		}//end of while loop
 	}//end of startLocations
-	
-	// Use this for initialization
-	void Start () {
-
-	}
 
 	public void setDifficulty(int diff){
+		//used to set the defaul values for the waves
 		difficulty = diff;
 		locmin = 1;
 		if ( difficulty>4)
