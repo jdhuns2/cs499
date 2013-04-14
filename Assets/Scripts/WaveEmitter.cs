@@ -116,13 +116,10 @@ public class WaveEmitter : MonoBehaviour {
 			go = myEnemyManager.giveEnemy();
 			e = (GetPath)go.GetComponent("GetPath");
 			trys++;
-				if(trys>myEnemyManager.listCount()){
-					
 		}
 		e.waveNum = wavenum;
 		e.createPath(min,max);
 		myEnemyManager.recieveEnemy (go);
 			//place enemy at end of list	    
+		}//end of while
 	}
-
-}

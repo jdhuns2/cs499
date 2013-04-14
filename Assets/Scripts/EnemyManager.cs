@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour {
 
-	public int basicAmount = 30;	//number of enemies
+	private int basicAmount = 30;	//number of enemies
 	ArrayList basicList;			//enemy ref array
 	
 	
@@ -60,6 +60,13 @@ public class EnemyManager : MonoBehaviour {
 			//r.rigidbody.detectCollisions = false;
 			//r.collider.enabled = false;
 		}
+		return r;
+	}
+	public GameObject createEnemy(){
+		GameObject r;
+		r = (GameObject)Instantiate (basicFab);
+		r.SendMessage ("Start");
+		r.SendMessage ("setParent");
 		return r;
 	}
 	public void recieveEnemy(GameObject enemy){
