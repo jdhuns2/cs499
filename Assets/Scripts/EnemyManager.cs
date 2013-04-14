@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour {
 
-	public int basicAmount = 5;	//number of enemies
+	public int basicAmount = 30;	//number of enemies
 	ArrayList basicList;			//enemy ref array
 	
 	
@@ -64,5 +64,12 @@ public class EnemyManager : MonoBehaviour {
 	}
 	public void recieveEnemy(GameObject enemy){
 		basicList.Add(enemy);
+	}
+	public void killEnemies(){
+	//used to kill off the enemies at the end of a wave. Ineffective
+		basicFab.BroadcastMessage ("killPath");
+	}
+	public int listCount(){
+		return basicList.Count;
 	}
 }

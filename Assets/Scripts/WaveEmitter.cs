@@ -1,100 +1,128 @@
 using UnityEngine;
 using System.Collections;
 using System.Threading;
-	public struct PathStartLocations
-	{public int min, max;
-	}
+
 public class WaveEmitter : MonoBehaviour {
-	PathStartLocations ONE,TWO,THREE,FOUR,FIVE;
-	//RPathGen myPathgen;
-	EnemyManager myEnemyManager;
+	private EnemyManager myEnemyManager;
 	public int activeEnemies;
-	private float timer;//used for timed waves
+	public float timer, delay;//used for timed waves
 	private int enemieslost;//used for waves that end after certain amount of enemies killed
 	private EnemyEmitter myEnemyEmitter;
+	private WaveCreator myWaveCreator;
 	public int wavenum;
 	public int totalEnemies;
+	public int WAVETYPE;
+	private bool nextWave;
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
-		//myPathgen = (RPathGen)go.GetComponent("RPathGen");
 		myEnemyEmitter=(EnemyEmitter)go.GetComponent ("EnemyEmitter");
-		//myPathgen.init();
-		//initialize the first paths
-		//myPathgen.genPaths (0,20);
-		//initialize enemies
+		myWaveCreator=(WaveCreator)go.GetComponent ("WaveCreator");
+		//initialize WaveCreator
+		myWaveCreator.setDifficulty(0);
+		
 		go = (GameObject)GameObject.FindGameObjectWithTag("ObjectManager");
 		myEnemyManager = (EnemyManager)go.GetComponent("EnemyManager");
+		//initialize enemies
 		myEnemyManager.initEnemies ();
 		//initialize local variables
 		wavenum = 0;
 		activeEnemies=0;
-		//valid array range to get a path from
-		ONE.min = 0;
-		ONE.max = 19;
-		TWO.min = 20;
-		TWO.max = 39;
-		THREE.min = 40;
-		THREE.max = 59;
-		FOUR.min = 60;
-		FOUR.max = 79;
-		FIVE.min = 80;
-		FIVE.max = 99;
+		delay = 0.0f;
+		nextWave = true;
+		WAVETYPE = myWaveCreator.createWave (Random.Range (0,0));//change to (1,3)
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	if (wavenum==0)
-			newTimedWave (0,8,0,0,0,0);
+		if(nextWave){
+			delay += Time.deltaTime;
+			if(delay > 3.0f){//time delay between waves
+				delay = 0.0f;
+				WAVETYPE = myWaveCreator.createWave (WAVETYPE);
+				nextWave = false;
+				myEnemyEmitter.nextColor ();
+			}
+		}
+		if(WAVETYPE==0||WAVETYPE == 3){//timed wave
+			timer+=Time.deltaTime;
+			//check if time has run out
+			if(timer>myWaveCreator.twaveDuration){
+				nextWave = true;
+			}
+		}
 	if(activeEnemies<totalEnemies){
-			//Debug.Log (activeEnemies);
-			myEnemyEmitter.isActive=true;
+			//myEnemyEmitter.isActive=true;
+			myEnemyEmitter.sendEnemy ();
 		}
 	}
 	/////////////My functions/////////////
 	
 	//Before each wave - create new paths 
 
-	public void newTimedWave(float seconds,int loc1, int loc2, int loc3, int loc4, int loc5){
+	public void newTimedWave(float seconds,int loc1, int loc2, int loc3, int loc4, int loc5, float emitterDelay){
 		//sets up timed wave
 		timer = 0.0f;
 		wavenum++;
 		//emitter and waveEmitter are on same wave
 		myEnemyEmitter.m_wavenum = wavenum;
 		//create enemies for each starting location specified
+		enemySetUp (loc1,loc2,loc3,loc4,loc5);
+		Debug.Log ("Activeenemies"+activeEnemies);
+	}
+	public void newKillCountWave(int killamt, int loc1, int loc2, int loc3, int loc4, int loc5, float emitterDelay){
+		wavenum++;
+		myEnemyEmitter.m_wavenum = wavenum;
+		enemySetUp (loc1,loc2,loc3,loc4,loc5);
+	}
+	public void newKillStreakWave(int killStreak,int loc1,int loc2,int loc3, int loc4, int loc5, float emitterDelay){
+		wavenum++;
+		myEnemyEmitter.m_wavenum = wavenum;
+		enemySetUp (loc1,loc2,loc3,loc4,loc5);
+	}
+	private void enemySetUp(int loc1, int loc2, int loc3, int loc4, int loc5){
+		totalEnemies=0;
 		for(int i=0;i<loc1;i++){
-			spawnFromLocation(ONE);
+			spawnFromLocation(1,1);
 			totalEnemies++;
 		}
 		for(int i=0;i<loc2;i++){
-			spawnFromLocation(ONE);
+			spawnFromLocation(2,2);
 			totalEnemies++;
 		}
 		for(int i=0;i<loc3;i++){
-			spawnFromLocation(ONE);
+			spawnFromLocation(3,3);
 			totalEnemies++;
 		}
 		for(int i=0;i<loc4;i++){
-			spawnFromLocation(ONE);
+			spawnFromLocation(4,4);
 			totalEnemies++;
 		}
 		for(int i=0;i<loc5;i++){
-			spawnFromLocation(ONE);
+			spawnFromLocation(5,5);
 			totalEnemies++;
 		}
-		Debug.Log ("Activeenemies"+activeEnemies);
-		//done setting up enemies, now to release them
-		myEnemyEmitter.isActive=true;
+		
 	}
-	private void spawnFromLocation(PathStartLocations l){
+	private void spawnFromLocation(int min,int max){
+		//puts enemy objects on a new path
 		GameObject go;
 		GetPath e;
+		int trys = 0;
+		go = myEnemyManager.giveEnemy();
+		e = (GetPath)go.GetComponent("GetPath");
+		while(e.waveNum==wavenum){//enemy is already member of wave need a new one
+			myEnemyManager.recieveEnemy (go);	
 			go = myEnemyManager.giveEnemy();
 			e = (GetPath)go.GetComponent("GetPath");
-			e.waveNum = wavenum;
-			e.createPath(1,1);
-			//place enemy at end of list
-		    myEnemyManager.recieveEnemy (go);
+			trys++;
+				if(trys>myEnemyManager.listCount()){
+					
+		}
+		e.waveNum = wavenum;
+		e.createPath(min,max);
+		myEnemyManager.recieveEnemy (go);
+			//place enemy at end of list	    
 	}
 
 }

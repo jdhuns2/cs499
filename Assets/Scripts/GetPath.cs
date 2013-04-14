@@ -22,7 +22,7 @@ public class GetPath : MonoBehaviour
 	void init(){
 	    isActive = false;
 		outofplay = false;
-		waveNum = 0;
+		waveNum = -1;
 		
 		//gets available paths
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
@@ -65,26 +65,6 @@ public class GetPath : MonoBehaviour
                     b[j].z = temp.z;
                 }
 	}
-	public void setPath(int min,int max){/*
-		//gets a random path and activates the enemy
-		//give path required amount of nodes
-		if(path.nodes.Count<RPathGen.NUMNODES){
-			for(int i = path.nodes.Count; i < RPathGen.NUMNODES; i++)
-				path.nodes.Add(new Vector3());
-		}//end if
-		//get the name for dictionary (it's the Key)
-		b = iTweenPath.GetPath(path.pathName);
-		    int p = Random.Range(min, max);
-         //   for (int i = 0; i < RPathGen.NUMNODES; i++)
-            {
-            //    temp = pths.getNode(p, i);
-                b[i].x = temp.x;
-                b[i].y = temp.y;
-                b[i].z = temp.z;
-            }*/
-
-	}
-
     void Start()
     {
 		init();
@@ -104,11 +84,6 @@ public class GetPath : MonoBehaviour
 					killPath();
 			}
         }
-
-		if(Input.GetKeyDown ("k")){
-			killPath ();
-			
-    }
 	}
 	void killPath(){
 		//stops enemy movement and places them out of camera and play area

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Vector3 pos;
-        pos = cam.camera.ViewportToWorldPoint(new Vector3(0,0.5f,cam.camera.farClipPlane));
+        pos = cam.camera.ViewportToWorldPoint(new Vector3(0.05f,0.5f,cam.camera.farClipPlane-.75f));
         //set start position
 		transform.position = pos;
         PlayerSpeed = 7.0f;

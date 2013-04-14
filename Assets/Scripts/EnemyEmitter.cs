@@ -2,8 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class EnemyEmitter : MonoBehaviour {
-	
+	static Color[] Ecolors = {Color.blue,Color.green,Color.yellow,Color.white,Color.red,Color.cyan,Color.gray};
 	public bool isActive;
+	private int colorIndex;
+	public float delay;
+	private float timeElapsed;
 	GameObject go;
 	GetPath e;//enemy object
 	private EnemyManager myEnemyManager;
@@ -13,36 +16,30 @@ public class EnemyEmitter : MonoBehaviour {
 		go = (GameObject)GameObject.FindGameObjectWithTag("ObjectManager");
 		myEnemyManager = (EnemyManager)go.GetComponent ("EnemyManager");
 		isActive=false;
+		delay = 0.0f;
+		timeElapsed = 0.0f;
 		m_wavenum=0;
+		colorIndex=0;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if(isActive){
-		//release the enemies!!
-		go = myEnemyManager.giveEnemy ();
-			
-			//go.transform.collider.isTrigger = true;
-		e = (GetPath)go.GetComponent ("GetPath");
-			if(e.waveNum==m_wavenum)//enemy has path and is ready to go
-			{	
+	public void sendEnemy(){
+			go = myEnemyManager.giveEnemy ();
+			e = (GetPath)go.GetComponent ("GetPath");
+			if(e.waveNum==m_wavenum){//enemy has path and is ready to go
 				e.startPath ();
 				go.renderer.enabled=true;
-				go.rigidbody.detectCollisions=true;
-				
+				go.rigidbody.detectCollisions=true;	
 				KillEnemy ke = (KillEnemy)go.GetComponent(typeof(KillEnemy));
 				SpiralEmitter se = (SpiralEmitter)go.GetComponent(typeof(SpiralEmitter));
-				
 				ke.SetAlive();
 				se.TimerOn();
-				//go.SendMessage("SetAlive");
-				//go.SendMessage("TimerOn");
+				go.renderer.material.SetColor ("_Color",Ecolors[colorIndex]);
 			}
 			else
 				myEnemyManager.recieveEnemy (go);
-			
-			isActive=false;
-		}//end of if(isActive)
 	}
-
+public void nextColor(){
+	//changes the colors of the enemies
+		colorIndex++;
+	}
 }
