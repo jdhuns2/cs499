@@ -21,15 +21,27 @@ public class EnemyEmitter : MonoBehaviour {
 		if(isActive){
 		//release the enemies!!
 		go = myEnemyManager.giveEnemy ();
-			go.renderer.enabled=true;
-			go.rigidbody.detectCollisions=true;
+			
+			//go.transform.collider.isTrigger = true;
 		e = (GetPath)go.GetComponent ("GetPath");
-			if(e.waveNum==m_wavenum){//enemy has path and is ready to go
+			if(e.waveNum==m_wavenum)//enemy has path and is ready to go
+			{	
 				e.startPath ();
-				isActive=false;
+				go.renderer.enabled=true;
+				go.rigidbody.detectCollisions=true;
+				
+				KillEnemy ke = (KillEnemy)go.GetComponent(typeof(KillEnemy));
+				SpiralEmitter se = (SpiralEmitter)go.GetComponent(typeof(SpiralEmitter));
+				
+				ke.SetAlive();
+				se.TimerOn();
+				//go.SendMessage("SetAlive");
+				//go.SendMessage("TimerOn");
 			}
 			else
 				myEnemyManager.recieveEnemy (go);
+			
+			isActive=false;
 		}//end of if(isActive)
 	}
 

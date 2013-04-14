@@ -8,7 +8,9 @@ public class Player : MonoBehaviour
     public Camera cam;
     private float maxY, minY;//determine play area independent of camera position
 
-
+	private float timer = 0;
+	public float fireDelay = 0.2f;
+	
     void Start()
     {
         Vector3 pos;
@@ -37,9 +39,12 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, maxY, transform.position.z);
         else if (transform.position.y > maxY)
             transform.position = new Vector3(transform.position.x, minY, transform.position.z);
-        if (Input.GetKeyDown("space"))
+        
+		timer += 1* Time.deltaTime;
+		if (Input.GetButton("Fire1") && timer >= fireDelay)
         {
 			gameObject.SendMessage("fire");
+			timer = 0;
         }
     }
 	void onTriggerEnter(Collider c){

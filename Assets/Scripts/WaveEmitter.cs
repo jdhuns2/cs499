@@ -13,7 +13,7 @@ public class WaveEmitter : MonoBehaviour {
 	private int enemieslost;//used for waves that end after certain amount of enemies killed
 	private EnemyEmitter myEnemyEmitter;
 	public int wavenum;
-	private int totalEnemies;
+	public int totalEnemies;
 	// Use this for initialization
 	void Awake () {
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");

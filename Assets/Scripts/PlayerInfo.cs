@@ -1,29 +1,32 @@
 //PlayerInfo.cs
-//Talks to gui
+//Talks to gui object in scene
 //Houses player lives/score/upgrades
-
-//TODO script
-
 using UnityEngine;
 using System.Collections;
 
 public class PlayerInfo : MonoBehaviour {
-
+	
+	//GUItext objects to be change - these are refrenced using Unity editor
 	public GUIText GUIscore;
 	public GUIText GUIlives;
 	public GUIText GUIbombs;
 	
+	//Player score
 	public int score = 0;
 	
+	//Ref to upgrades
 	public GameObject upgrade1, upgrade2;
 	
+	//player lives
 	public int lives = 2;
 	
+	//number of available bombs
 	public int bombs = 0;
 	
 	
 	// Use this for initialization
 	void Start () {
+		//Init gui texts
 		GUIscore.text = score.ToString();
 		GUIlives.text = "Lives: " + lives.ToString();
 		GUIbombs.text = "Bombs: " + bombs.ToString();
@@ -43,6 +46,7 @@ public class PlayerInfo : MonoBehaviour {
 		//Probs need to set location too;
 		newUp.transform.parent = gameObject.transform;
 		
+		//adds upgrade - if slots are full drops upgrade 1
 		if(upgrade1 == null)
 		{
 			upgrade1 = newUp;
@@ -60,6 +64,7 @@ public class PlayerInfo : MonoBehaviour {
 		}	
 	}
 	
+	//AddScore: increments score - called by KillEnemy script
 	public void AddScore(int aScore)
 	{
 		score+= aScore;

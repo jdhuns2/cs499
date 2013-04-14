@@ -1,22 +1,116 @@
 using UnityEngine;
 using System.Collections;
 
-public class WaveCreator : MonoBehaviour {
+//timed wave = 0,3 kill count wave = 1, kill streak = 2
 
+public class WaveCreator : MonoBehaviour {
+	//varaiables to keep track of last wave to increment them
+	public float twaveDuration;
+	private int killamt, killStreak;
+	//keeps track of minimum and maximum enemies to appear in a wave and their start locations
+	public int locmin,locmax,minEnemies,maxEnemies;
+	private int difficulty;
+	public int WaveType;
+	private WaveEmitter WE;
+	private int loc1,loc2,loc3,loc4,loc5;//number of enemies generated from a certain location
 	
+	public int createWave(int prevWave){
+	//randomly select between timed, killcount, and kill streak	
+	//and make sure that the next wave is a different type than the previous
+		switch (prevWave){
+		case 0://previous wave was timed
+		case 3:
+			WaveType = Random.Range (1,2);
+			break;
+		case 1://previous wave was kill count
+			WaveType = Random.Range (2,3);
+			break;
+		case 2://previous wave was kill streak
+			WaveType = Random.Range (0,1);
+			break;
+		}//end of switch statement
+		WaveType=0;//for testing
+		prevWave = WaveType;
+		//change variables that affect all wave types
+		minEnemies += 2;
+		maxEnemies += 3;
+		if(WaveType==0||WaveType==3){//timed wave
+			//determine # of enemies and start location distribution and length of time
+			twaveDuration+=5.0f;
+			startLocations();
+			//tell the WaveEmitter to create the new timed wave
+			WE.newTimedWave(twaveDuration,loc1,loc2,loc3,loc4,loc5,0.0f);
+		}
+		if(WaveType==1){//kill count wave
+			killamt += Random.Range (5,10);
+			startLocations();
+		}
+		if(WaveType==2){//kill streak wave
+			killStreak += Random.Range (2,5);
+			startLocations();
+		}
+		return WaveType;
+	}
 	
-	
-	
-	
-	
+		void startLocations(){
+			//reset all values
+			int amtEnemies = Random.Range (minEnemies,maxEnemies);
+			int t = 0;
+			loc1 = 0;
+			loc2 = 0;
+			loc3 = 0;
+			loc4 = 0;
+			loc5 = 0;
+				while(t<amtEnemies){
+					if(locmin==1&&t<amtEnemies){
+						int a = Random.Range (1,amtEnemies-t);
+						t+=a;
+						loc1+=a;
+					}
+					if(locmin<3&&locmax>2&&t<amtEnemies){//spawn from area 2
+						int a = Random.Range (1,amtEnemies-t);
+						t+=a;
+						loc2+=a;
+					}
+					if(locmin<4&&locmax>3&&t<amtEnemies){//spawn from area 3
+						int a = Random.Range (1,amtEnemies-t);
+						t+=a;
+						loc3+=a;
+					}
+					if(locmin<3&&locmax>4&&t<amtEnemies){//spawn from area 4
+						int a = Random.Range (1,amtEnemies-t);
+						t+=a;
+						loc4+=a;
+					}
+					if(locmax>4&&t<amtEnemies){//spawn from area 5
+						t += Random.Range (1,amtEnemies-t);
+						loc5+=t;
+					}
+		}//end of while loop
+	}//end of startLocations
 	
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void setDifficulty(int diff){
+		difficulty = diff;
+		locmin = 1;
+		if ( difficulty>4)
+			locmax = 5;
+		else
+			locmax = 1+difficulty;
+		twaveDuration = 0.0f;
+		minEnemies = 1+difficulty;
+		maxEnemies = 3+difficulty;
+		WaveType = -1;
+		//set initial wave goals they will be incremented with the first wave so they should start lower
+		killamt = 6+difficulty;
+		killStreak = 3+difficulty;
+		//create reference to the WaveEmitter
+		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
+		WE = (WaveEmitter)go.GetComponent ("WaveEmitter");
+	//TODO change the rest of the game settings
 	}
-}
+}//end of class

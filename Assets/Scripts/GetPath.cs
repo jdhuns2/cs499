@@ -44,6 +44,7 @@ public class GetPath : MonoBehaviour
 		iTween.PutOnPath (this.gameObject,b,0.0f);
 		isActive=true;
 		outofplay=false;
+		WE.activeEnemies++;
 	}
 	public void createPath(int min,int max){
 		//gets a random path and activates the enemy

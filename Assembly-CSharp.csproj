@@ -44,7 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Lightning Assets\Sources\LightningBolt.cs" />
      <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
+     <Compile Include="Assets\Scripts\Boss Scripts\SatilliteInfo.cs" />
+     <Compile Include="Assets\Scripts\Boss Scripts\SatilliteMovement.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletManager.cs" />
      <Compile Include="Assets\Scripts\EnemyEmitter.cs" />
@@ -56,7 +59,6 @@
      <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
-     <Compile Include="Assets\Scripts\RPathGen.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
      <Compile Include="Assets\Scripts\WaveCreator.cs" />
      <Compile Include="Assets\Scripts\WaveEmitter.cs" />
@@ -66,9 +68,16 @@
      <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{843777BE-1310-4A42-37EB-DEBB4BAEB82F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{A0ADBCAA-809F-FE93-3773-938BD3DDE05F}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

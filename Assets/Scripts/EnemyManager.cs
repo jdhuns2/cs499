@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour {
 
-	public int basicAmount = 20;	//number of enemies
+	public int basicAmount = 5;	//number of enemies
 	ArrayList basicList;			//enemy ref array
 	
 	
@@ -55,7 +55,7 @@ public class EnemyManager : MonoBehaviour {
 		else{					//if list is empty create a new bullet
 			r = (GameObject)Instantiate(basicFab);
 			r.SendMessage ("Start");
-			r.renderer.enabled = false;
+//			r.renderer.enabled = false;
 			r.SendMessage("setParent", this);	//let them know who's boss
 			//r.rigidbody.detectCollisions = false;
 			//r.collider.enabled = false;
