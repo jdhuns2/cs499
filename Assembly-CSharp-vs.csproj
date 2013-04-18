@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_0;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -44,28 +44,61 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AddBomb.cs" />
+     <Compile Include="Assets\AddLife.cs" />
+     <Compile Include="Assets\AddRapidFire.cs" />
+     <Compile Include="Assets\AddShield.cs" />
+     <Compile Include="Assets\Lightning Assets\Sources\LightningBolt.cs" />
      <Compile Include="Assets\Pixelplacement\iTweenPath\iTweenPath.cs" />
+     <Compile Include="Assets\Scripts\Boss Scripts\SatilliteInfo.cs" />
+     <Compile Include="Assets\Scripts\Boss Scripts\SatilliteMovement.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletManager.cs" />
+     <Compile Include="Assets\Scripts\EnemyEmitter.cs" />
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\Difficulty.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\GameOver.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\HighScore.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\Lose.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\SaveScores.cs" />
+     <Compile Include="Assets\Scripts\GUIscripts\Win.cs" />
      <Compile Include="Assets\Scripts\GameCamera.cs" />
      <Compile Include="Assets\Scripts\GetPath.cs" />
      <Compile Include="Assets\Scripts\KillEnemy.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
+     <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
-     <Compile Include="Assets\Scripts\RPathGen.cs" />
+     <Compile Include="Assets\Scripts\PlayerReset.cs" />
      <Compile Include="Assets\Scripts\SpiralEmitter.cs" />
-     <Compile Include="Assets\Scripts\WaveEmitter.cs" />
+     <Compile Include="Assets\Scripts\Tester.cs" />
+     <Compile Include="Assets\Scripts\Upgrade Scripts\Bomb.cs" />
+     <Compile Include="Assets\Scripts\Upgrade Scripts\BombMissle.cs" />
+     <Compile Include="Assets\Scripts\Upgrade Scripts\ShieldTimer.cs" />
+     <Compile Include="Assets\Scripts\Upgrade.cs" />
+     <Compile Include="Assets\Scripts\UpgradeMovement.cs" />
+     <Compile Include="Assets\Scripts\Wave Scripts\WaveCreator.cs" />
+     <Compile Include="Assets\Scripts\Wave Scripts\WaveEmitter.cs" />
+     <Compile Include="Assets\Scripts\newEnemy.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
      <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
      <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
      <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Scores.txt" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{843777BE-1310-4A42-37EB-DEBB4BAEB82F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

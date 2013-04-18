@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_0_1;UNITY_4_0;UNITY_STANDALONE_WIN;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -44,8 +44,33 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\jsemitter.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\CrumpleMesh.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\ExtrudedMeshTrail.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\FractalTexture.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\HeightmapGenerator.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\InitialRigidbodyVelocity.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\MouseOrbit.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\PaintVertices.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\SinusCurveModifier.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\SmoothRandomPosition.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\TronTrail.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\Twist.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\~ControlScripts\DragTransform.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\~ControlScripts\KeyboardOrbit.js" />
+     <Compile Include="Assets\Lightning Assets\Sources\~ControlScripts\VPS.js" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Scores.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{843777BE-1310-4A42-37EB-DEBB4BAEB82F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{A0ADBCAA-809F-FE93-3773-938BD3DDE05F}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
