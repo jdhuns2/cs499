@@ -6,6 +6,7 @@ public class Difficulty : MonoBehaviour {
     private string title = "Select Difficulty";
 	
     private int screenPosition = 2 * Screen.width / 5;
+	private WaveCreator WC;
 	
 	// difficulty level
  	public static int difficulty;
@@ -21,7 +22,10 @@ public class Difficulty : MonoBehaviour {
 	private float width = Screen.width/2 - Screen.width/10;
 	// button position height
 	private float height = Screen.height/3 - Screen.height/20;
- 
+ 	void Start(){
+		//GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
+		//WC = (WaveCreator)go.GetComponent ("WaveCreator");	
+	}
 	// Update is called once per frame
 	void OnGUI () {
         GUI.skin = menuSkin;
@@ -32,12 +36,14 @@ public class Difficulty : MonoBehaviour {
 		     if(GUI.Button(new Rect(width, height, buttonWidth, buttonHeight),"Easy"))
 			{
 		      difficulty = 0;
+			  //WC.setDifficulty ();
 			  Application.LoadLevel("Waves");
 			}
 		// button to select normal level
 		else if(GUI.Button(new Rect(width, height+buttonHeight, buttonWidth, buttonHeight),"Normal"))
 		{
 			difficulty = 2;
+			//WC.setDifficulty ();
 			Application.LoadLevel("Waves");
 		}
 		
@@ -45,6 +51,7 @@ public class Difficulty : MonoBehaviour {
 		else if(GUI.Button(new Rect(width, height+2*buttonHeight, buttonWidth, buttonHeight),"Hard"))
 		{
 			difficulty = 5;
+			//WC.setDifficulty ();
 			Application.LoadLevel("Waves");
 		}
 		// button to back to main menu

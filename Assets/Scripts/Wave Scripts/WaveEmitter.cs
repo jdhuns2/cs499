@@ -27,7 +27,7 @@ public class WaveEmitter : MonoBehaviour {
 		myEnemyEmitter=(EnemyEmitter)go.GetComponent ("EnemyEmitter");
 		myWaveCreator=(WaveCreator)go.GetComponent ("WaveCreator");
 		//initialize WaveCreator
-		myWaveCreator.setDifficulty(0);//default difficulty
+		myWaveCreator.setDifficulty(Difficulty.difficulty);//default difficulty
 		
 		go = (GameObject)GameObject.FindGameObjectWithTag("ObjectManager");
 		myEnemyManager = (EnemyManager)go.GetComponent("EnemyManager");

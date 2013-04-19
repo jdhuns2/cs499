@@ -16,7 +16,7 @@ public class WaveCreator : MonoBehaviour {
 	private int killamt, killStreak;
 	//keeps track of minimum and maximum enemies to appear in a wave and their start locations
 	public int locmin,locmax,minEnemies,maxEnemies;
-	private int difficulty;
+	//private int difficulty;
 	public int WaveType;
 	private WaveEmitter WE;
 	private int loc1,loc2,loc3,loc4,loc5;//number of enemies generated from a certain location
@@ -103,9 +103,8 @@ public class WaveCreator : MonoBehaviour {
 		}//end of while loop
 	}//end of startLocations
 
-	public void setDifficulty(int diff){
+	public void setDifficulty(int difficulty){
 		//used to set the defaul values for the waves
-		difficulty = diff;
 		locmin = 1;
 		if ( difficulty>4)
 			locmax = 5;
@@ -117,7 +116,7 @@ public class WaveCreator : MonoBehaviour {
 		WaveType = -1;
 		//set initial wave goals they will be incremented with the first wave so they should start lower
 		killamt = 6+difficulty;
-		killStreak = 3+difficulty;
+		//killStreak = 3+difficulty;
 		//create reference to the WaveEmitter
 		GameObject go = (GameObject)GameObject.FindGameObjectWithTag("WaveGen");
 		WE = (WaveEmitter)go.GetComponent ("WaveEmitter");

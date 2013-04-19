@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour {
 	public GUIText GUIgoal;
 	
 	//Player score
-	public static int score = 0;
+	public static int score;
 	
 	//Ref to upgrades
 	public GameObject upgrade1, upgrade2;

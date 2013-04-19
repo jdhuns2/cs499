@@ -7,7 +7,7 @@ using System.Collections;
 /// </summary>
 public class EnemyManager : MonoBehaviour {
 
-	private int basicAmount = 30;	//number of enemies
+	private int basicAmount = 60;	//number of enemies
 	ArrayList basicList;			//enemy ref array
 	
 	public GameObject basicFab; 

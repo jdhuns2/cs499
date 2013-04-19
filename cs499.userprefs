@@ -1,14 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AddRapidFire.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIscripts\HighScore.cs">
     <Files>
-      <File FileName="Assets\AddLife.cs" Line="8" Column="1" />
-      <File FileName="Assets\Scripts\Player.cs" Line="89" Column="42" />
-      <File FileName="Assets\AddRapidFire.cs" Line="11" Column="19" />
+      <File FileName="Assets\Scripts\GUIscripts\HighScore.cs" Line="36" Column="1" />
+      <File FileName="Assets\Scripts\GUIscripts\GameOver.cs" Line="19" Column="1" />
+      <File FileName="Assets\Scripts\PlayerInfo.cs" Line="36" Column="19" />
+      <File FileName="Assets\Scripts\Wave Scripts\WaveEmitter.cs" Line="30" Column="52" />
+      <File FileName="Assets\Scripts\Wave Scripts\WaveCreator.cs" Line="118" Column="26" />
+      <File FileName="Assets\Scripts\GUIscripts\SaveScores.cs" Line="14" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\James\Desktop\cs499\Assets\Scripts\GUIscripts\GameOver.cs" line="11" />
+      <Breakpoint file="C:\Users\James\Desktop\cs499\Assets\Scripts\GUIscripts\SaveScores.cs" line="43" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets\Scripts\GUIscripts\GameOver.cs" line="48" offsetX="868" offsetY="752" expression="global::System.Convert.ToInt32" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

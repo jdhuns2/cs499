@@ -18,7 +18,7 @@ public class HighScore : MonoBehaviour {
 	public GUISkin HighScoreSkin;
 	// position to the label left
 	private float labelLeft = Screen.width/2-125;
-	
+	private StreamReader reader;
 	
 	// button width
 	private float buttonWith = Screen.width/5;
@@ -31,17 +31,17 @@ public class HighScore : MonoBehaviour {
 		// label of high score display
 		GUI.Label(new Rect(labelLeft, -50,250,200),  "Top 10 High Scores");
         // read the text file and store the names and scores into an array
-		using (var reader = new StreamReader("Assets/Scores.txt"))
-        {
+		//using (reader = new StreamReader("Assets/Scores.txt"))
+        reader = new StreamReader("Assets/Scores.txt");
+
             string line;
-            while ((line = reader.ReadLine()) != null&count<20)
+            while ((line = reader.ReadLine()) != null && count<20)
             {
                 scores[count] = line;
-				//print(count);
                 count++;
-				//print(count);
             }
-        }
+			reader.Close();
+
         for (int i = 0; i < 10; i++)
         {
             rank = (i+1).ToString() ;
